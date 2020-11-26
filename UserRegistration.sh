@@ -59,7 +59,22 @@ function getMobileNumber()
 	fi
 }
 
+function getPassword()
+{
+	read -p "choose Password :" password
+	passwordPattern="[0-9a-zA-Z]{8,}$"
+
+	if [[ $password =~ $passwordPattern ]]
+	then
+        	echo "valid Number"
+	else
+        	echo "Invalid Number"
+	fi
+}
+
+
 getfirstName
 getlastName
 getEmail
 getMobileNumber
+getPassword
