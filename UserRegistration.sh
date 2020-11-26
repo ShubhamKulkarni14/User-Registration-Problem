@@ -1,9 +1,9 @@
 #!/bin/bash -x
 
-function firstName()
+function getFirstName()
 {
-	read -p "Enter First name :" fname
 
+	read -p "Enter First name :" fname
 	fnamePattern="^[A-Z][a-zA-Z]{2,}$"
 
 	if [[ $fname =~ $fnamePattern ]]
@@ -15,17 +15,17 @@ function firstName()
 
 }
 
-function lastName()
+function getLastName()
 {
-	read -p "Enter Last name :" lname
 
+	read -p "Enter Last name :" lname
 	lnamePattern="^[A-Z][a-zA-Z]{2,}$"
 
 	if [[ $lname =~ $lnamePattern ]]
 	then
         	echo "last Name is valid"
 	else
-	        echo "last Name is invalid"
+        	echo "last Name is invalid"
 	fi
 
 }
@@ -34,7 +34,7 @@ function getEmail()
 {
 
 	read -p "Enter Email address :" email
-	email="^[0-9a-zA-Z]+[._+-]{0,1}[0-9a-zA-Z]+[@][0-9a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-z]{2}){0,1}$"
+	emailPattern="^[0-9a-zA-Z]+[._+-]{0,1}[0-9a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-z]{2}){0,1}$"
 
 	if [[ $email =~ $emailPattern ]]
 	then
@@ -44,11 +44,10 @@ function getEmail()
 	fi
 }
 
+
 function getMobileNumber()
 {
-
 	read -p "Enter Mobile number :" number
-
 	numberPattern="^[0-9]{2,3}[[:space:]][0-9]{10}$"
 
 	if [[ $number =~ $numberPattern ]]
@@ -62,19 +61,18 @@ function getMobileNumber()
 function getPassword()
 {
 	read -p "choose Password :" password
-	passwordPattern="[0-9a-zA-Z]{8,}$"
 
-	if [[ $password =~ $passwordPattern ]]
+
+	if [[ ${#password} -ge 8 && "$password" == *[[:upper:]]* ]]
 	then
-        	echo "valid Number"
+        	echo "valid password"
 	else
-        	echo "Invalid Number"
+        	echo "Invalid password"
 	fi
 }
 
-
-getfirstName
-getlastName
+getFirstName
+getLastName
 getEmail
 getMobileNumber
 getPassword
