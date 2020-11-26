@@ -57,6 +57,7 @@ function getMobileNumber()
         	echo "Invalid Number"
 	fi
 }
+
 function getPassword()
 {
 	read -p "choose Password :" password
@@ -64,7 +65,7 @@ function getPassword()
 
 	if [[ $password =~ $pattern ]]
 	then
-		if [[ ${#password} -ge 8 && $password =~ [[:upper:]] && $password =~ [[:lower:]] ]]
+		if [[ ${#password} -ge 8 && "$password" == *[[:upper:]]* && "$password" == *[[:lower:]]* && "$password" == *[0-9]* && "$password" == *[@-#_+$]* ]]
 		then
 	        	echo test pass
 		else
